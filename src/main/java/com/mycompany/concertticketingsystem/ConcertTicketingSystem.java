@@ -41,13 +41,13 @@ public class ConcertTicketingSystem {
             int menuChoice = Character.getNumericValue(sc.next().charAt(0));
             
             switch(menuChoice) {
-                case 1: 
+                case 1: // Search Concert
                     searchConcert(artistList, concertList);
                     break;
-                case 2:
+                case 2: // View Trending
                     System.out.println("View Trending");
                     break;
-                case 3:
+                case 3: // Buy Ticket
                     System.out.println("Buy Ticket\n");
                     
                     if(!isLoggedIn) {
@@ -61,7 +61,9 @@ public class ConcertTicketingSystem {
                     System.out.println("Select Concert show you want");
                     
                     break;
-                case 4:
+                case 4: // Login/Register
+                    System.out.println("Login\n");
+                case 5: // Exit
                     exit = true;
                     System.out.println("Successfully Exited");
                     break;
@@ -263,32 +265,10 @@ public class ConcertTicketingSystem {
         return concertList;
     }
     
-//    public static Artist[] initializeArtists() {
-//        Artist[] artistList = {new Artist("Billie Eilish", "English", "Pop"),
-//                               new Artist("BlackPink", "Korean", "Pop"),
-//                               new Artist("Jay Chou", "Mandarin", "Pop"),
-//                               new Artist("JJ Lin", "Mandarin", "Pop"),
-//                               new Artist("Justin Bieber", "English", "Pop"),
-//                               new Artist("(G)-IDLE", "Korean", "Hip Hop")};
-//        
-//        return artistList;
-//    }
-    
-//    public static Venue[] initializeVenues() {
-//        Venue[] venueList = {new Venue("Arena Of Stars", "Arena Of Stars, Resort World Genting Genting Highlands, 69000 Bentong, Pahang", "Theater", 6000),
-//                                    new Venue("Bukit Jalil National Stadium", "Jalan Barat, Bukit Jalil, 57000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur", "Stadium", 87411),
-//                                    new Venue("Zepp Kuala Lumpur", "B2-01-02, Level B2, Entertainment Hub, BBCC, 2, Jalan Hang Tuah, 55100 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur", "Concert Hall", 2414)};
-//        
-//        return venueList;
-//    }
-    
-//    public static Concert[] initializeConcerts(Artist[] artistList, Venue[] venueList) {            
-//        Concert[] concertList = {new Concert("Justin Lo Fresh Start Live - Malaysia", artistList[5], LocalDateTime.parse("2022-04-30T20:30:00"), "Cantonese", venueList[0], false),
-//                                 new Concert("Happier Than Ever, The World Tour 2022", artistList[0], LocalDateTime.parse("2022-08-18T20:30:00"), "English", venueList[1], true)};
-//        
-//        return concertList;
-//    }
-    
+    public static String[] initializeUsers() {
+        
+    }
+
     public static boolean Login() {
         Scanner sc = new Scanner(System.in);
         
@@ -332,7 +312,7 @@ public class ConcertTicketingSystem {
     }
     
     public static void displayMenu() {
-        String[] custMenu = {"Search Concert", "View Trending", "Buy Ticket", "Exit" };
+        String[] custMenu = {"Search Concert", "View Trending", "Buy Ticket", "Login/Register", "Exit" };
         System.out.println("Menu: ");
         
         for(int i=0; i<custMenu.length; i++) {
