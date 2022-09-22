@@ -395,13 +395,24 @@ public class ConcertTicketingSystem {
     }
     
     public static Person[][] initializePerson() {
-        double fileLineNumber = countFileLineNumber("user.txt");
+        int fileLineNumber = (int)countFileLineNumber("user.txt");
         Person[][] usersList = null;   // Person[0][] is Admin users, Person[1][] is Customer users
+        Admin[] adminList = new Admin[fileLineNumber];
+        Customer[] customerList = new Customer[fileLineNumber];
+        
         String[] userDetails;
         int counter = 0;
-        String[] userType = new String[1000];
-        String[] username = new String[1000];
-        String[] password = new String[1000];
+        String[] userType = new String[fileLineNumber];
+        String[] username = new String[fileLineNumber];
+        String[] password = new String[fileLineNumber];
+        String[] accStatus = new String[fileLineNumber];
+        String[] userFirstName = new String[fileLineNumber];
+        String[] userLastName = new String[fileLineNumber];
+        String[] userAddress = new String[fileLineNumber];
+        String[] userEmail = new String[fileLineNumber];
+        String[] userPhoneNum = new String[fileLineNumber];
+        String[] userJoinedDate = new String[fileLineNumber];
+        
         
         // Try-Catch get data from venue.txt
         try {
@@ -415,6 +426,13 @@ public class ConcertTicketingSystem {
                 userType[counter] = userDetails[0];
                 username[counter] = userDetails[1];
                 password[counter] = userDetails[2];
+                accStatus[counter] = userDetails[3];
+                userFirstName[counter] = userDetails[4];
+                userLastName[counter] = userDetails[5];
+                userAddress[counter] = userDetails[6];
+                userEmail[counter] = userDetails[7];
+                userPhoneNum[counter] = userDetails[8];
+                userJoinedDate[counter] = userDetails[9];
 
                 currentLine = fileScanner.nextLine();        
                 counter++;                
@@ -425,16 +443,36 @@ public class ConcertTicketingSystem {
             userType[counter] = userDetails[0];
             username[counter] = userDetails[1];
             password[counter] = userDetails[2];
+            accStatus[counter] = userDetails[3];
+            userFirstName[counter] = userDetails[4];
+            userLastName[counter] = userDetails[5];
+            userAddress[counter] = userDetails[6];
+            userEmail[counter] = userDetails[7];
+            userPhoneNum[counter] = userDetails[8];
+            userJoinedDate[counter] = userDetails[9];
 
             fileScanner.close();
             
             // Create Admin object & Customer object
-            for(int i=0; i<counter; i++) {
+            int accStatusLength = AccountStatus.values().length;
+            AccountStatus accountStatus;
+            for(int i=0; i<counter; i++) {            
+                
                 if (userType[counter].equals("admin")) {
-                    username[counter]
+                    for (int j = 0; j < accStatusLength; j++) {
+                        if (accStatus[i].toUpperCase().equals(AccountStatus.values()[j].toString())) {
+                            accountStatus = AccountStatus.valueOf(accStatus[i].toUpperCase());
+                            adminList[i] = new Admin(new Account(username[i], password[i], accountStatus), userFirstName[i], userLastName[i], userAddress[i], userEmail[i], userPhoneNum[i], userJoinedDate[i]);
+                        }
+                    }                
                 } 
                 else if (userType[counter].equals("customer")) {
-
+                    for (int j = 0; j < accStatusLength; j++) {
+                        if (accStatus[i].toUpperCase().equals(AccountStatus.values()[j].toString())) {
+                            accountStatus = AccountStatus.valueOf(accStatus[i].toUpperCase());
+                            customerList[i] = new Customer(new Account(username[i], password[i], accountStatus), userFirstName[i], userLastName[i], userAddress[i], userEmail[i], userPhoneNum[i], userJoinedDate[i]);
+                        }
+                    }
                 }
             }
 
