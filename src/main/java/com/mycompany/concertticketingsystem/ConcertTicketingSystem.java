@@ -34,6 +34,7 @@ public class ConcertTicketingSystem {
         Artist[] artistList = initializeArtists();
         Venue[] venueList = initializeVenues();
         Concert[] concertList = initializeConcerts(artistList, venueList);
+        Person[][] userList = initializePerson();   // userList[0][] is Admin list, serList[1][] is Customer list
         
                
         // Welcome User
@@ -54,20 +55,48 @@ public class ConcertTicketingSystem {
                 case 3: // Buy Ticket
                     System.out.println("Buy Ticket\n");
                     
+                    // Check Login Status
                     if(!isLoggedIn) {
                         System.out.println("You are not signed in. Please sign in before buy ticket.");
                         
                         if(Login())
                             isLoggedIn = true;
+                        
+                            Guest guest = new Guest();
+                            // Get user detail (username, password, accStatus)
+                            guest.registerAccount("username", "password", "accStatus");
                     } else 
+                        // Display Concert List
+
+                        // Get choice
+                        // Display seat status(booked / empty) [table maybe]
+                        // Ask for detail (no, ticketCat, etc.)
+                        // 
                         break;
                     
                     System.out.println("Select Concert show you want");
                     
                     break;
+                
                 case 4: // Login/Register
                     System.out.println("Login\n");
-                case 5: // Exit
+                    
+                    // Remember to use userList[][] (Line 37) to check credentials
+                    
+                    // Login/Register
+                    
+                    // Menu
+                    
+                    // User input username & password
+                    
+                    //            
+                case 5: // Other
+                    System.out.println("Other");
+                    
+                    // Code Here
+                    
+
+                case 6: // Exit
                     exit = true;
                     System.out.println("Successfully Exited");
                     break;
@@ -86,6 +115,16 @@ public class ConcertTicketingSystem {
     // Methods & Functions  
     public static void startScreen() {
         System.out.println("Welcome to Concert Ticketing System!\n");
+    }
+    
+    public static void displayMenu() {
+        String[] custMenu = {"Search Concert", "View Trending", "Buy Ticket", "Login/Register", "Other", "Exit"};
+        System.out.println("Menu: ");
+
+        for (int i = 0; i < custMenu.length; i++) {
+            System.out.printf("%-3s%-20s\n", (i + 1) + ".", custMenu[i]);
+        }
+        System.out.print("Select the menu (num): ");
     }
     
     // Data Initialization Methods
@@ -421,7 +460,7 @@ public class ConcertTicketingSystem {
             String currentLine = fileScanner.nextLine();
 
             while (fileScanner.hasNextLine()) {
-                userDetails = currentLine.split(",");
+                userDetails = currentLine.split("\t");
                 
                 userType[counter] = userDetails[0];
                 username[counter] = userDetails[1];
@@ -438,7 +477,7 @@ public class ConcertTicketingSystem {
                 counter++;                
             }
 
-            userDetails = currentLine.split(",");
+            userDetails = currentLine.split("\t");
 
             userType[counter] = userDetails[0];
             username[counter] = userDetails[1];
@@ -480,6 +519,9 @@ public class ConcertTicketingSystem {
         } catch (FileNotFoundException ex) {
             System.out.println("File does not exist!\n");
         }
+        
+        usersList[0] = adminList;
+        usersList[1] = customerList;
         
         return usersList;
     }
@@ -527,17 +569,6 @@ public class ConcertTicketingSystem {
         return isEqual;
     }
     
-    public static void displayMenu() {
-        String[] custMenu = {"Search Concert", "View Trending", "Buy Ticket", "Login/Register", "Exit" };
-        System.out.println("Menu: ");
-        
-        for(int i=0; i<custMenu.length; i++) {
-            System.out.printf("%-3s%-20s\n",(i + 1) + ".", custMenu[i]);
-        }
-        System.out.print("Select the menu (num): ");
-    }
-    
-  
     // Search Methods
     public static void searchConcert(Artist[] artistList, Concert[] concertList) {
         Scanner sc = new Scanner(System.in);
