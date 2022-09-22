@@ -67,16 +67,51 @@ public class ConcertTicketingSystem {
                             guest.registerAccount("username", "password", "accStatus");
                     } else 
                         // Display Concert List
+                        System.out.println("-----------------------------------------------------------------------------------------------------------------");
+                        System.out.println("| NO |       DATE & TIME       |                CONCERT TITLE                |              VENUE               |");
+                        System.out.println("|----|-------------------------|---------------------------------------------|----------------------------------|");
+                        System.out.println("|  1 |  2022-04-30  T20:00:00  |    Justin Lo Fresh Start Live - Malaysia    |          Arena of Stars          |");
+                        System.out.println("|----|-------------------------|---------------------------------------------|----------------------------------|");
+                        System.out.println("|  2 |  2022-08-18  T20:30:00  |    Happier Than Ever, The World Tour 2022   |   Bukit Jalil National Stadium   |");
+                        System.out.println("|----|-------------------------|---------------------------------------------|----------------------------------|");
+                        System.out.println("|  3 |  2022-09-09  T20:30:00  |    (G)-IDLE 'Just Me ()I-DLE' World Tour    |         Zepp Kuala Lumpur        |");
+                        System.out.println("|----|-------------------------|---------------------------------------------|----------------------------------|");
+                        System.out.println("|  4 |  2022-10-22  T20:30:00  |             Justice World Tour              |   Bukit Jalil National Stadium   |");
+                        System.out.println("|----|-------------------------|---------------------------------------------|----------------------------------|");
+                        System.out.println("|  5 |  2022-12-18  T19:00:00  |           JJ Lin \"JJ20\" World Tour          |   Bukit Jalil National Stadium   |");
+                        System.out.println("|----|-------------------------|---------------------------------------------|----------------------------------|");
+                        System.out.println("|  6 |  2023-01-15  T19:00:00  |   Jay Chou Carnival World Tour - Malaysia   |   Bukit Jalil National Stadium   |");
+                        System.out.println("|----|-------------------------|---------------------------------------------|----------------------------------|");
+                        System.out.println("|  7 |  2023-03-04  T20:00:00  |             Born Pink World Tour            |   Bukit Jalil National Stadium   |");
+                        System.out.println("-----------------------------------------------------------------------------|----------------------------------|");
 
                         // Get choice
+                        do{
+                            System.out.println("Please Enter Your Preference Concert Show (1-8): ");
+                            int choice = sc.nextInt();
+                            
+                            if(choice > 10 && choice < 0){
+                                System.out.println("\t\t\t*****************************************");
+                                System.out.println("\t\t\t\tPLEASE ENTER 1 - 10 ONLY! ");
+                                System.out.println("\t\t\t*****************************************");
+                            }
+                            
+                            else if(choice > 0 && choice <11){
+                                
+                            }
+                        
+                        
+                        System.out.println("Are you sure? (Y for yes, N for no): ") ;
+                        char confirmation = sc.next().charAt(0);
+                            if (confirmation == 'Y' || confirmation == 'y'){
+                                
+                                
+                            }
                         // Display seat status(booked / empty) [table maybe]
                         // Ask for detail (no, ticketCat, etc.)
                         // 
                         break;
-                    
-                    System.out.println("Select Concert show you want");
-                    
-                    break;
+                   
                 
                 case 4: // Login/Register
                     System.out.println("Login\n");
@@ -102,7 +137,7 @@ public class ConcertTicketingSystem {
                     break;
                 default:
                     System.out.println("\nError!\n");
-            }
+            }while();
         }
         
         // Select 
