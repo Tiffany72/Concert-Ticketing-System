@@ -431,7 +431,7 @@ public class ConcertTicketingSystem {
             // Create Admin object & Customer object
             for(int i=0; i<counter; i++) {
                 if (userType[counter].equals("admin")) {
-                    username[counter]
+                    //username[counter]
                 } 
                 else if (userType[counter].equals("customer")) {
 
