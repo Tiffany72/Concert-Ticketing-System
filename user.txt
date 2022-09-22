@@ -1,0 +1,6 @@
+admin	taruc	trauc	active	John	Smith	9 Jln 6/118C, Desa Tun Razak, Kuala Lumpur, 56000 Wilayah Persekutuan, johnsmith234@gmail.com, 0113456789, 20210412
+admin	jkme	jkjk1234
+admin	tscf	scfscf88
+admin	wwh	wwhwwh55
+customer	debby	deb34
+customer	samantha	sam2@34
