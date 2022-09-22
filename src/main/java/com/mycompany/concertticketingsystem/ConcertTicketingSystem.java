@@ -429,11 +429,15 @@ public class ConcertTicketingSystem {
             fileScanner.close();
             
             // Create Admin object & Customer object
-            if (userType[counter].equals("admin")) {
-                username[counter] = 
-            } else if (userType[counter].equals("customer")) {
+            for(int i=0; i<counter; i++) {
+                if (userType[counter].equals("admin")) {
+                    username[counter]
+                } 
+                else if (userType[counter].equals("customer")) {
 
+                }
             }
+
 
         } catch (FileNotFoundException ex) {
             System.out.println("File does not exist!\n");
